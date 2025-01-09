@@ -25,6 +25,10 @@ public class ShipmentDetail {
         this.updatedBy = updatedBy;
     }
 
+    public ShipmentDetail() {
+        //TODO Auto-generated constructor stub
+    }
+
     public int getId() {
         return id;
     }

@@ -1,6 +1,9 @@
 package View;
 
 import javax.swing.*;
+
+import Controller.LoginSingleton;
+
 import java.awt.*;
 
 public class MainMenu {
@@ -39,8 +42,15 @@ public class MainMenu {
         transaksiButton.setBounds(43, 220, 300, 50);
         transaksiButton.setFont(new Font("SansSerif", Font.BOLD, 18));
         transaksiButton.addActionListener(e -> {
-            frame.dispose();
-            new AddTransactionView();
+            if (LoginSingleton.getInstance().getID() == 0) {
+
+                JOptionPane.showMessageDialog(null, "LOGIN DULU", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                frame.dispose();
+                new AddTransactionView();
+            }
+
         });
 
         JButton historyButton = new JButton("HISTORY PAKET");
@@ -48,14 +58,21 @@ public class MainMenu {
         historyButton.setFont(new Font("SansSerif", Font.BOLD, 18));
         historyButton.addActionListener(e -> {
             frame.dispose();
+            new lihatHistoryView();
         });
 
         JButton addDetailButton = new JButton("TAMBAH DETAIL PENGIRIMAN");
         addDetailButton.setBounds(40, 360, 330, 50);
         addDetailButton.setFont(new Font("SansSerif", Font.BOLD, 18));
         addDetailButton.addActionListener(e -> {
-            frame.dispose();
-            new AddDetailPengirimanView();
+            if (LoginSingleton.getInstance().getID() == 0) {
+                JOptionPane.showMessageDialog(null, "LOGIN DULU", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                frame.dispose();
+                new AddDetailPengirimanView();
+            }
+
         });
 
         panel.add(logiButton);

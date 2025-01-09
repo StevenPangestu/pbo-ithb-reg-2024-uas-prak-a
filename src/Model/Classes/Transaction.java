@@ -1,5 +1,6 @@
 package Model.Classes;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Transaction {
@@ -25,6 +26,15 @@ public class Transaction {
         this.receiptName = receiptName;
         this.receiptAddress = receiptAddress;
         this.receiptPhone = receiptPhone;
+    }
+
+    public Transaction(String string, String string2, double double1, double double2, Timestamp timestamp,
+            Timestamp timestamp2) {
+                
+    }
+
+    public Transaction() {
+        //TODO Auto-generated constructor stub
     }
 
     public int getId() {

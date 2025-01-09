@@ -1,6 +1,5 @@
 package View;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -12,7 +11,6 @@ import javax.swing.JTextField;
 
 import Controller.AddTransaction;
 import Controller.DBController;
-import Controller.RegistrasiCheck;
 
 public class AddTransactionView {
     // private ArrayList<String> packageTypeComboBox;
@@ -93,6 +91,7 @@ public class AddTransactionView {
                 new AddTransaction().AddTransactionUser(type, berat, date, nama, alamat, nomor);
                 JOptionPane.showMessageDialog(null, "BERHASIL ADD TRANSACTION");
             }
+
             frame.dispose();
             new MainMenu();
         });
