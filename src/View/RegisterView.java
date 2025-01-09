@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -81,8 +82,12 @@ public class RegisterView {
                 String email = emailField.getText();
                 String password = String.valueOf(passwordField.getPassword());
 
-                new RegistrasiCheck().Regis(nomor, email,nama, alamat, password);
-
+                if (nomor.isEmpty() || nama.isEmpty() || alamat.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "All fields must be filled in!", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    new RegistrasiCheck().Regis(nomor, email, nama, alamat, password);
+                }
             }
         });
         JButton buttonBack = new JButton("BACK");

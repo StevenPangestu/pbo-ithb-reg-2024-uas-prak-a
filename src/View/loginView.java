@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -62,11 +63,18 @@ public class loginView {
                 String nomor = nomorField.getText();
                 String password = String.valueOf(passwordField.getPassword());
 
-                new loginCheck().Check(nomor, password);
-
+                if (!new loginCheck().Check(password, nomor)) {
+                     JOptionPane.showMessageDialog(null, "LOGIN GAGAL !");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "BERHASIL LOGIN");
+                }
             }
         });
         JButton buttonBack = new JButton("BACK");
+        buttonBack.setBounds(30,20, 90, 30);
+        frame.add(buttonBack);
+
         buttonBack.addActionListener(e -> {
             frame.dispose();
             new MainMenu();

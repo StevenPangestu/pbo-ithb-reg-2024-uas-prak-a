@@ -10,10 +10,12 @@ public class loginCheck {
     static DatabaseHandler conn = new DatabaseHandler();
 
     public boolean Check(String pw, String phoneNum) {
-        String query = "SELECT phone,passwordd FROM customer";
+        String query = "SELECT customerid,phone,passwordd FROM customer";
 
         String phone = "";
         String pass = "";
+        int id = 0;
+        boolean succeed = false;
 
         try {
             conn.connect();
@@ -23,12 +25,14 @@ public class loginCheck {
             while (rs.next()) {
                 phone = rs.getString("phone");
                 pass = rs.getString("passwordd");
-
-                if (phoneNum.equals(phone) && pass.equals(pw)) {
-                    JOptionPane.showMessageDialog(null, "Welcome!");
-                    return true;
+                id = rs.getInt("customerid");
+                
+                if (phoneNum.equals(phone) && pw.equals(pass)) {
+                    LoginSingleton.getInstance().setID(id);
+                    succeed = true;
+                    break;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Gagal Login.");
+                    succeed = false;
                 }
             }
         } catch (SQLException e) {
@@ -39,7 +43,7 @@ public class loginCheck {
         } finally {
             conn.disconnect();
         }
-        return false;
+        return succeed;
     }
 
 }

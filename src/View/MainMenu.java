@@ -23,7 +23,7 @@ public class MainMenu {
         logiButton.setBounds(43, 80, 300, 50);
         logiButton.setFont(new Font("SansSerif", Font.BOLD, 18));
         logiButton.addActionListener(e -> {
-            // frame.dispose();
+            frame.dispose();
             new loginView();
         });
 

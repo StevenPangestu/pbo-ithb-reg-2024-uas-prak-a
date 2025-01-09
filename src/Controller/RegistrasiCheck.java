@@ -15,7 +15,7 @@ public class RegistrasiCheck {
 
         if (Check(phone, nama)) {
             try {
-                    
+
                 conn.connect();
                 PreparedStatement statement = conn.con.prepareStatement(queryAdd);
                 statement.setString(1, pw);
@@ -37,6 +37,7 @@ public class RegistrasiCheck {
 
     }
 
+  
     public boolean Check(String phone, String email) {
 
         String query = "SELECT phone,email FROM customer";
