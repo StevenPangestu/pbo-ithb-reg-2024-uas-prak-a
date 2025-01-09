@@ -19,42 +19,41 @@ public class MainMenu {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        JLabel title1 = new JLabel("UAS PBO");
-        title1.setBounds(140, 10, 450, 50);
-        title1.setFont(new Font("SansSerif", Font.BOLD, 24));
-        panel.add(title1);
+        JButton logiButton = new JButton("LOGIN");
+        logiButton.setBounds(43, 80, 300, 50);
+        logiButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        logiButton.addActionListener(e -> {
+            // frame.dispose();
+            new loginView();
+        });
 
-        JLabel title2 = new JLabel("PESAWAT");
-        title2.setBounds(135, 50, 450, 50);
-        title2.setFont(new Font("SansSerif", Font.BOLD, 24));
-        panel.add(title2);
+        JButton regisButton = new JButton("REGISTRASI");
+        regisButton.setBounds(43, 150, 300, 50);
+        regisButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        regisButton.addActionListener(e -> {
+            frame.dispose();
+            new RegisterView();
+        });
 
-        JButton addButton = new JButton("ADD");
-        addButton.setBounds(43, 140, 300, 50);
-        addButton.setFont(new Font("SansSerif", Font.BOLD, 18));
-        addButton.addActionListener(e -> {
+        JButton transaksiButton = new JButton("TRANSAKSI PENGIRIMAN");
+        transaksiButton.setBounds(43, 220, 300, 50);
+        transaksiButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        transaksiButton.addActionListener(e -> {
             frame.dispose();
         });
 
-        JButton searchButton = new JButton("SEARCH");
-        searchButton.setBounds(43, 210, 300, 50);
-        searchButton.setFont(new Font("SansSerif", Font.BOLD, 18));
-        searchButton.addActionListener(e -> {
+        JButton historyButton = new JButton("HISTORY PAKET");
+        historyButton.setBounds(43, 290, 300, 50);
+        historyButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        historyButton.addActionListener(e -> {
             frame.dispose();
         });
 
-        JButton exitButton = new JButton("EXIT");
-        exitButton.setBounds(43, 280, 300, 50);
-        exitButton.setFont(new Font("SansSerif", Font.BOLD, 18));
-        exitButton.addActionListener(e -> {
-            frame.dispose();
-        });
+        panel.add(logiButton);
+        panel.add(regisButton);
+        panel.add(transaksiButton);
 
-
-        panel.add(addButton);
-        panel.add(searchButton);
-        panel.add(exitButton);
-
+        panel.add(historyButton);
         frame.add(panel);
         frame.setVisible(true);
     }
