@@ -68,6 +68,7 @@ public class loginView {
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "BERHASIL LOGIN");
+                    new MainMenu();
                 }
             }
         });

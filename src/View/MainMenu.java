@@ -12,7 +12,7 @@ public class MainMenu {
 
     public void showMainMenu() {
         frame = new JFrame("UAS PBO");
-        frame.setSize(400, 420);
+        frame.setSize(400, 500);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,6 +40,7 @@ public class MainMenu {
         transaksiButton.setFont(new Font("SansSerif", Font.BOLD, 18));
         transaksiButton.addActionListener(e -> {
             frame.dispose();
+            new AddTransactionView();
         });
 
         JButton historyButton = new JButton("HISTORY PAKET");
@@ -49,11 +50,19 @@ public class MainMenu {
             frame.dispose();
         });
 
+        JButton addDetailButton = new JButton("TAMBAH DETAIL PENGIRIMAN");
+        addDetailButton.setBounds(40, 360, 330, 50);
+        addDetailButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        addDetailButton.addActionListener(e -> {
+            frame.dispose();
+            new AddDetailPengirimanView();
+        });
+
         panel.add(logiButton);
         panel.add(regisButton);
         panel.add(transaksiButton);
-
         panel.add(historyButton);
+        panel.add(addDetailButton);
         frame.add(panel);
         frame.setVisible(true);
     }
