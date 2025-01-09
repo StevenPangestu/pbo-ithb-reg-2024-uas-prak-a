@@ -86,7 +86,8 @@ public class RegisterView {
                     JOptionPane.showMessageDialog(null, "All fields must be filled in!", "Error",
                             JOptionPane.ERROR_MESSAGE);
                 } else {
-                    new RegistrasiCheck().Regis(nomor, email, nama, alamat, password);
+                    System.out.println("masuk regis");
+                    new RegistrasiCheck().Regis(nomor, nama, alamat, password);
                 }
             }
         });

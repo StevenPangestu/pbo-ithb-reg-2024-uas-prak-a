@@ -10,21 +10,22 @@ import javax.swing.JOptionPane;
 public class RegistrasiCheck {
     static DatabaseHandler conn = new DatabaseHandler();
 
-    public void Regis(String phone, String email, String nama, String alamat, String pw) {
-        String queryAdd = "INSERT INTO customer (passwordd, email,name, address, phone) VALUES (?, ?,?, ?, ?)";
+    public void Regis(String phone, String nama, String alamat, String pw) {
+        String queryAdd = "INSERT INTO customer (password,name, address, phone) VALUES (?,?, ?, ?)";
 
+        System.out.println(Check(phone, nama));
         if (Check(phone, nama)) {
             try {
-
+                System.out.println("masuk regis2");
                 conn.connect();
                 PreparedStatement statement = conn.con.prepareStatement(queryAdd);
                 statement.setString(1, pw);
-                statement.setString(2, email);
-                statement.setString(3, nama);
-                statement.setString(4, alamat);
-                statement.setString(5, phone);
-
+                statement.setString(2, nama);
+                statement.setString(3, alamat);
+                statement.setString(4, phone);
                 statement.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "BERHASIL REGISTER!");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -37,23 +38,23 @@ public class RegistrasiCheck {
 
     }
 
-  
-    public boolean Check(String phone, String email) {
+    public boolean Check(String phone, String name) {
 
-        String query = "SELECT phone,email FROM customer";
+        String query = "SELECT phone,name FROM customer";
         String phoneDatabase = "";
         String nameDatabase = "";
 
         try {
+          
             conn.connect();
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
                 phoneDatabase = rs.getString("phone");
-                nameDatabase = rs.getString("email");
+                nameDatabase = rs.getString("name");
 
-                if (phone.equals(phoneDatabase) && nameDatabase.equals(email)) {
+                if (phone.equals(phoneDatabase) && nameDatabase.equals(nameDatabase)) {
                     return false;
                 } else {
                     return true;

@@ -10,7 +10,7 @@ public class loginCheck {
     static DatabaseHandler conn = new DatabaseHandler();
 
     public boolean Check(String pw, String phoneNum) {
-        String query = "SELECT customerid,phone,passwordd FROM customer";
+        String query = "SELECT cust_id,phone,password FROM customer";
 
         String phone = "";
         String pass = "";
@@ -24,10 +24,10 @@ public class loginCheck {
 
             while (rs.next()) {
                 phone = rs.getString("phone");
-                pass = rs.getString("passwordd");
-                id = rs.getInt("customerid");
-                
-                if (phoneNum.equals(phone) && pw.equals(pass)) {
+                pass = rs.getString("password");
+                id = rs.getInt("cust_id");
+             
+                if (phoneNum.equals(phone) && pw.equals(pass)) {    
                     LoginSingleton.getInstance().setID(id);
                     succeed = true;
                     break;
